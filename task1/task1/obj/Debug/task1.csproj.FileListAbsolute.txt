@@ -1,0 +1,6 @@
+S:\Projects\computational_science\task1\task1\bin\Debug\task1.exe.config
+S:\Projects\computational_science\task1\task1\bin\Debug\task1.exe
+S:\Projects\computational_science\task1\task1\bin\Debug\task1.pdb
+S:\Projects\computational_science\task1\task1\obj\Debug\task1.csprojResolveAssemblyReference.cache
+S:\Projects\computational_science\task1\task1\obj\Debug\task1.exe
+S:\Projects\computational_science\task1\task1\obj\Debug\task1.pdb

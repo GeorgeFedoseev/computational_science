@@ -98,9 +98,9 @@ namespace task1
             double epsk = epsu / 3 / 0.48;
             double epsSqrt = epsv / 2;
 
-            Console.WriteLine("Precision: " + Math.Log10(1 / eps).ToString()+" decimals after dot");
+            Console.WriteLine("Precision: " + Math.Log10(1 / eps).ToString()+" digits after dot\n");
 
-            Console.WriteLine("    My        Std    ");
+            Console.WriteLine("  Arg      My          Std    ");
 
             for (double x = 0.2; x <= 0.3; x += 0.01) {
                 double m = 1 - Math.Pow(x, 2);
@@ -110,13 +110,12 @@ namespace task1
                 double my_value = u + v;
                 double std_value = Math.Atan(Math.Sqrt(0.9*x+1)/(1-x*x)) + Math.Sin(3*x+0.6);
 
+                Console.Write("x={0:f2}  ", x);
                 Console.Write(String.Format("{0:F" + Math.Log10(1 / eps).ToString() + "}    ", my_value));
-                Console.Write(String.Format("{0:F" + Math.Log10(1 / eps).ToString() + "}\n", std_value));
+                Console.Write(String.Format("{0:F" + Math.Log10(1 / eps).ToString() + "}\n", std_value));                
             }
 
-            
-
-            
+            Console.ReadKey();
         }
 
 

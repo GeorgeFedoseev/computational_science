@@ -1,1 +1,6 @@
 S:\Projects\computational_science\task_2\task_2\bin\Debug\task_2.exe.config
+S:\Projects\computational_science\task_2\task_2\obj\Debug\task_2.csprojResolveAssemblyReference.cache
+S:\Projects\computational_science\task_2\task_2\bin\Debug\task_2.exe
+S:\Projects\computational_science\task_2\task_2\bin\Debug\task_2.pdb
+S:\Projects\computational_science\task_2\task_2\obj\Debug\task_2.exe
+S:\Projects\computational_science\task_2\task_2\obj\Debug\task_2.pdb

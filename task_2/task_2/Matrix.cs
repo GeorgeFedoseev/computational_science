@@ -156,7 +156,62 @@ namespace task_2
         }
 
 
+        public Matrix appendRight(Matrix b) {
+            if (getHeight() != b.getHeight()) {
+                throw new Exception("Matrix height must match for concatination");
+            }
 
+            Matrix res = new Matrix(getHeight(), getWidth()+b.getWidth());
+
+            for (int i = 0; i < res.getHeight(); i++) {
+                for (int j = 0; j < res.getWidth(); j++) {
+                    if (j < getWidth()) { 
+                        // this matrix
+                        res.data[i, j] = data[i, j];
+                    }else{
+                        // b matrix
+                        res.data[i, j] = b.data[i, j-getWidth()];
+                    }
+                }
+            }
+
+            return res;
+
+        }
+
+        public void swapRows(int a, int b) {
+            var tmpRow = getRow(a);
+            setRow(a, getRow(b));
+            setRow(a, tmpRow);
+        }
+
+        public Matrix getRow(int row) {
+            if (row < 0 || row >= getHeight()) {
+                throw new Exception("No such row number "+row);
+            }
+
+
+            Matrix res = new Matrix(1, getWidth());
+            for(int i = 0; i < getWidth(); i++){
+                res.data[0, i] = data[row, i];
+            }
+
+            return res;
+        }
+
+        public void setRow(int row, Matrix val) { 
+            if (row < 0 || row >= getHeight()) {
+                throw new Exception("No such row number "+row);
+            }
+
+            if (val.getWidth() != getWidth()) {
+                throw new Exception("Rows width's must match");
+            }
+
+            for(int i = 0; i < getWidth(); i++){
+                data[row, i] = val.data[0, i];
+            }
+        }
 
         public double get(int i, int j)
         {

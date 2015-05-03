@@ -139,6 +139,114 @@ namespace task_2
             return m1 * k;
         }
 
+        static public Matrix operator /(Matrix m1, double k)
+        {
+            return m1 * (1/k);
+        }
+
+
+        public double det() {
+            if (getWidth() != getHeight()) {
+                throw new Exception("For det calculation matrix must be square");
+            }
+
+            if (getWidth() == 1) {
+                return get(0, 0);
+            }
+
+            double res = 0;
+            for (int j = 0; j < getWidth(); j++) {
+                res += Math.Pow(-1, j)*get(0, j) * crossOutRowAndCol(0, j).det();
+            }
+
+            return res;
+        }
+
+        public Matrix crossOutRowAndCol(int row, int col) {
+            if (getWidth() <= 1 || getHeight() <= 1
+                || row < 0 || row >= getHeight() || col < 0 || col >= getWidth()) 
+            {
+                throw new Exception("Wrong data to cross out col and row");
+            }
+
+            Matrix res = new Matrix(getHeight()-1, getWidth()-1);
+
+            for (int i = 0; i < getHeight(); i++) {
+                for (int j = 0; j < getWidth(); j++) {
+                    if (i != row && j != col) {
+                        var i_m = i > row ? i - 1 : i;
+                        var j_m = j > col ? j - 1 : j;
+
+                        res.data[i_m, j_m] = data[i, j];
+                    }
+                }
+            }
+
+            return res;
+
+        }
+
+
+
+        public Matrix inverse() {
+            if (getWidth() != getHeight()) {
+                throw new Exception("Matrix should be square to be inversed");
+            }
+
+            double detA = det();
+
+            if (detA == 0) {
+                throw new Exception("Matrix isn't inversable (det = 0)");
+            }
+
+            Matrix res = new Matrix(getHeight(), getHeight());
+
+            for (int i = 0; i < getHeight(); i++) {
+                for (int j = 0; j < getWidth(); j++) {
+                    res.data[i, j] = Math.Pow(-1, i+j)*T().crossOutRowAndCol(i, j).det();
+                }
+            }
+
+            return res/detA;
+        }
+
+        public double eNorm() {
+            double sum = 0;
+            for (int i = 0; i < getHeight(); i++) {
+                for (int j = 0; j < getWidth(); j++) {
+                    sum += Math.Pow(get(i, j), 2);
+                }
+            }
+
+            return Math.Sqrt(sum);
+        }
+
+        public Matrix copy() {
+            return subMatrix(0, 0, getHeight(), getWidth());
+        }
+
+
+
+        public Matrix subMatrix(int startRow, int startCol, int height, int width) {
+            if (startRow < 0 || startCol < 0 || startRow >= getHeight() || startCol >= getWidth()
+                || startRow + height > getHeight() || startCol + width > getWidth()) 
+            {
+                throw new Exception(String.Format("Wrong coordinates for submatrix: (x: {0}, y:{1}, w:{2}, h:{3})",
+                                                        startCol, startRow, width, height));
+            }
+
+            Matrix res = new Matrix(height, width);
+
+            for (int i = 0; i < res.getHeight(); i++) {
+                for (int j = 0; j < res.getWidth(); j++) {
+                    res.data[i, j] = data[startRow + i, startCol + j];
+                }
+            }
+
+            return res;
+
+        }
+
         public Matrix T()
         {
             Matrix res = new Matrix(getWidth(), getHeight());
@@ -179,6 +287,19 @@ namespace task_2
 
         }
 
+        public int getRowNumberWithNotNullColumnStartingAtRow(int column, int row) { 
+            if(column < 0 || column >= getWidth()){
+                throw new Exception("No such column "+column);
+            }
+            for (int i = row; i < getHeight(); i++) {
+                if (data[i, column] != 0) {
+                    return i;
+                }
+            }
+
+            throw new Exception("All rows have 0 in column "+column);
+        }
+
         public void swapRows(int a, int b) {
             var tmpRow = getRow(a);
             setRow(a, getRow(b));
@@ -199,6 +320,20 @@ namespace task_2
             return res;
         }
 
+        public Matrix getColumn(int col) { 
+            if (col < 0 || col >= getWidth()) {
+                throw new Exception("No such row number " + col);
+            }
+
+            Matrix res = new Matrix(getHeight(), 1);
+            for(int i = 0; i < getHeight(); i++){
+                res.data[i, 0] = data[i, col];
+            }
+
+            return res;
+
+        }
+
         public void setRow(int row, Matrix val) { 
             if (row < 0 || row >= getHeight()) {
                 throw new Exception("No such row number "+row);
@@ -216,6 +351,11 @@ namespace task_2
         public double get(int i, int j)
         {
             return data[i, j];
+        }
+
+        public void set(int i, int j, double val)
+        {
+            data[i, j] = val;
         }
 
         public int getHeight()

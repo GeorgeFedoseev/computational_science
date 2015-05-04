@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace task_2
 {
@@ -27,25 +23,24 @@ namespace task_2
         }
 
 
-        public Matrix solverWithIterativeMethod(double eps) {
-
-			// restruct matrix so that aii != 0
-            for (int i = 0; i < A.getHeight(); i++) {
-                A.swapRows(i, A.getRowNumberWithNotNullColumnStartingAtRow(i, i));
-            }
+        public Matrix solveWithIterativeMethod(double eps, bool debug = false) {
 
             Matrix delta = new Matrix(A.getWidth()) / (2*A.eNorm());
+
             Matrix D = A.inverse() - delta;
 
             Matrix alpha = delta * A;
             Matrix beta = D * b;
 
-            Console.WriteLine("alpha:");
-            Console.WriteLine(alpha);
-            Console.WriteLine("beta:");
-            Console.WriteLine(beta);
+            if (debug) {
+                Console.WriteLine("alpha:");
+                Console.WriteLine(alpha);
+                Console.WriteLine("beta:");
+                Console.WriteLine(beta);
 
-            Console.WriteLine("||alpha|| = {0}", alpha.eNorm());
+                Console.WriteLine("||alpha|| = {0}", alpha.eNorm());
+            }
+            
 
 
             Matrix x = beta.copy();
@@ -55,7 +50,8 @@ namespace task_2
             while(true){
                 x_next = beta + alpha * x;                
 
-                Console.WriteLine("[k={0} norm: {1}]", k, (x_next - x).eNorm());
+                if(debug)
+                    Console.WriteLine("[k={0} norm: {1}]", k, (x_next - x).eNorm());
 
                 if((x_next - x).eNorm() <= eps)
                     return x_next;
@@ -93,9 +89,8 @@ namespace task_2
                     Ab.setRow(k, modRow - Ab.getRow(i) * modRow.get(0, i));
                 }
 
-                //Console.WriteLine(Ab);
             }
-            //Console.WriteLine("reverse");
+
 			// reverse
 			for (int i = Ab.getHeight()-2; i >= 0; i--) {
 
@@ -104,8 +99,6 @@ namespace task_2
                     Ab.setRow(i, modRow - Ab.getRow(k) * modRow.get(0, k));
                 }
 
-
-                    //Console.WriteLine(Ab);
             }
 
             return Ab.getColumn(Ab.getWidth()-1);

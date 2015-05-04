@@ -145,10 +145,13 @@ namespace task_2
         }
 
 
-        public double det() {
+        public double det(bool debug = false) {
             if (getWidth() != getHeight()) {
                 throw new Exception("For det calculation matrix must be square");
             }
+
+            if (debug)
+                Console.WriteLine("det:start");
 
             if (getWidth() == 1) {
                 return get(0, 0);
@@ -159,15 +162,21 @@ namespace task_2
                 res += Math.Pow(-1, j)*get(0, j) * crossOutRowAndCol(0, j).det();
             }
 
+            if (debug)
+                Console.WriteLine("det:done: " + res);
+
             return res;
         }
 
-        public Matrix crossOutRowAndCol(int row, int col) {
+        public Matrix crossOutRowAndCol(int row, int col, bool debug = false) {
             if (getWidth() <= 1 || getHeight() <= 1
                 || row < 0 || row >= getHeight() || col < 0 || col >= getWidth()) 
             {
                 throw new Exception("Wrong data to cross out col and row");
             }
+
+            if (debug)
+                Console.WriteLine("crossOutRowAndCol:start");
 
             Matrix res = new Matrix(getHeight()-1, getWidth()-1);
 
@@ -182,16 +191,22 @@ namespace task_2
                 }
             }
 
+            if (debug)
+                Console.WriteLine("crossOutRowAndCol:done");
+
             return res;
 
         }
 
 
 
-        public Matrix inverse() {
+        public Matrix inverse(bool debug = false) {
             if (getWidth() != getHeight()) {
                 throw new Exception("Matrix should be square to be inversed");
             }
+
+            if (debug)
+                Console.WriteLine("inverse:start");
 
             double detA = det();
 
@@ -199,13 +214,17 @@ namespace task_2
                 throw new Exception("Matrix isn't inversable (det = 0)");
             }
 
+
             Matrix res = new Matrix(getHeight(), getHeight());
 
             for (int i = 0; i < getHeight(); i++) {
-                for (int j = 0; j < getWidth(); j++) {
+                for (int j = 0; j < getWidth(); j++) {                    
                     res.data[i, j] = Math.Pow(-1, i+j)*T().crossOutRowAndCol(i, j).det();
                 }
             }
+
+            if (debug)
+                Console.WriteLine("inverse:done");
 
             return res/detA;
         }
@@ -247,8 +266,11 @@ namespace task_2
 
         }
 
-        public Matrix T()
+        public Matrix T(bool debug = false)
         {
+            if (debug)
+                Console.WriteLine("transpose:start");
+
             Matrix res = new Matrix(getWidth(), getHeight());
 
             for (int i = 0; i < res.getHeight(); i++)
@@ -259,8 +281,10 @@ namespace task_2
                 }
             }
 
-            return res;
+            if (debug)
+                Console.WriteLine("transpose:done");
 
+            return res;
         }
 
 

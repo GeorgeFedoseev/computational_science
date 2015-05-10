@@ -21,4 +21,6 @@
 *.la
 *.a
 *.lib
+
 *.tlog
+*.sdf

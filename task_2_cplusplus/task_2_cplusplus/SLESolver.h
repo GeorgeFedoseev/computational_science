@@ -106,7 +106,7 @@ namespace task_2
 		{
 			auto Ab = A.appendRight(b);
 
-			cout << Ab.ToString() << endl;
+			//cout << Ab.ToString() << endl;
 
 			// straight
 			for (int i = 0; i < Ab.getHeight(); i++)
@@ -122,9 +122,9 @@ namespace task_2
 			}
 
 
-			cout << Ab.ToString() << endl;
+			//cout << Ab.ToString() << endl;
 
-			cout << "reverse" << endl;
+			//cout << "reverse" << endl;
 
 			// reverse
 			for (int i = Ab.getHeight() - 2; i >= 0; i--)
@@ -133,20 +133,16 @@ namespace task_2
 				for (int k = A.getWidth() - 1; k > i; k--)
 				{
 					auto modRow = Ab.getRow(i);
-					cout << modRow.ToString() << endl;
-					cout << Ab.getRow(k).ToString()<< endl;
-					cout <<  modRow.get(0, k) << endl;
-					cout << (Ab.getRow(k) * modRow.get(0, k)).ToString() << endl;
-					cout << (modRow-(Ab.getRow(k) * modRow.get(0, k))).ToString() << endl;
+					
 					Ab.setRow(i, modRow - Ab.getRow(k) * modRow.get(0, k));
 					
 				}
 
-				cout << Ab.ToString() << endl;
+				//cout << Ab.ToString() << endl;
 
 			}
 
-			cout << Ab.ToString() << endl;
+			//cout << Ab.ToString() << endl;
 
 			return Ab.getColumn(Ab.getWidth() - 1);
 		}

@@ -103,7 +103,7 @@ void main(void){
 	double _eps = 0.0000001;
 	auto _dim = 4;
 
-	while (_dim < 7)
+	while (_dim < 6)
 	{
 		Matrix _A_l(_dim);
 		for (int i = 0; i < _A_l.getHeight(); i++)

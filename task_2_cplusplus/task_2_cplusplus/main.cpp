@@ -85,7 +85,7 @@ void main(void){
 
 
 	cout << "SOVE USING ITERATION METHOD:" << endl;
-	double eps = 0.000001;
+	double eps = 0.0001;
 	cout << "eps: " << eps << std::endl;
 
 	auto sol = solver->solveWithIterativeMethod(eps);
@@ -100,7 +100,7 @@ void main(void){
 	std::wcout << std::wstring(L"********  ill-conditioned ********") << std::endl;
 
 
-	double _eps = 0.0000001;
+	double _eps = 0.0001;
 	auto _dim = 4;
 
 	while (_dim < 6)
@@ -149,7 +149,7 @@ void main(void){
 			}
 		}
 
-		std::wcout << std::wstring(L"[DIM=") << _dim << std::endl;
+		std::wcout << std::wstring(L"[DIM=") << _dim << "]" << std::endl;
 		std::wcout << std::wstring(L"eps=") << _eps << std::wstring(L"; N=") << N << std::endl;
 		Matrix _A = _A_l + (_A_r * N)*_eps;
 

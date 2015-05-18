@@ -69,7 +69,7 @@ namespace task_2
 					std::wcout << std::wstring(L"[k=") << k << std::wstring(L" norm: ") << (x_next - x).eNorm() << std::endl;
 				}
 
-				if ((x_next - x).eNorm() <= eps)
+				if ((alpha.eNorm()/(1-alpha.eNorm()))*(x_next - x).eNorm() <= eps)
 				{
 					return x_next;
 				}

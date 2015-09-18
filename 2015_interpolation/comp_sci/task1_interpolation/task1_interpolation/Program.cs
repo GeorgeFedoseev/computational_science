@@ -34,7 +34,7 @@ namespace task1_interpolation
            });*/
 
 
-            Interapolator interpolator = new Interapolator(f);
+            Interpolator interpolator = new Interpolator(f, 10, new Interval(0, 20));
 
 
             // dont exit app

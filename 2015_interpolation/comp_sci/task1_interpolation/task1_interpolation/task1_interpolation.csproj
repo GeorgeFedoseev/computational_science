@@ -55,7 +55,7 @@
       <DependentUpon>GraphForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Graph.cs" />
-    <Compile Include="Interapolator.cs" />
+    <Compile Include="Interpolator.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="GraphForm.resx">

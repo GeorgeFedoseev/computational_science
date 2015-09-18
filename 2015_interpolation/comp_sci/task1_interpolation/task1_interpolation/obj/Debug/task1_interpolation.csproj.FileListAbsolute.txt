@@ -8,3 +8,13 @@ c:\users\st032080\documents\visual studio 2012\Projects\comp_sci\task1_interpola
 c:\users\st032080\documents\visual studio 2012\Projects\comp_sci\task1_interpolation\task1_interpolation\obj\Debug\task1_interpolation.pdb
 c:\users\st032080\documents\visual studio 2012\Projects\comp_sci\task1_interpolation\task1_interpolation\bin\Debug\GoogleChartSharp.xml
 c:\users\st032080\documents\visual studio 2012\Projects\comp_sci\task1_interpolation\task1_interpolation\obj\Debug\task1_interpolation.GraphForm.resources
+C:\Users\st032080\Documents\Projects\computational_science\2015_interpolation\comp_sci\task1_interpolation\task1_interpolation\bin\Debug\task1_interpolation.exe.config
+C:\Users\st032080\Documents\Projects\computational_science\2015_interpolation\comp_sci\task1_interpolation\task1_interpolation\obj\Debug\task1_interpolation.exe
+C:\Users\st032080\Documents\Projects\computational_science\2015_interpolation\comp_sci\task1_interpolation\task1_interpolation\obj\Debug\task1_interpolation.pdb
+C:\Users\st032080\Documents\Projects\computational_science\2015_interpolation\comp_sci\task1_interpolation\task1_interpolation\obj\Debug\task1_interpolation.csprojResolveAssemblyReference.cache
+C:\Users\st032080\Documents\Projects\computational_science\2015_interpolation\comp_sci\task1_interpolation\task1_interpolation\obj\Debug\task1_interpolation.GraphForm.resources
+C:\Users\st032080\Documents\Projects\computational_science\2015_interpolation\comp_sci\task1_interpolation\task1_interpolation\obj\Debug\task1_interpolation.Properties.Resources.resources
+C:\Users\st032080\Documents\Projects\computational_science\2015_interpolation\comp_sci\task1_interpolation\task1_interpolation\obj\Debug\task1_interpolation.csproj.GenerateResource.Cache
+C:\Users\st032080\Documents\Projects\computational_science\2015_interpolation\comp_sci\task1_interpolation\task1_interpolation\bin\Debug\task1_interpolation.exe
+C:\Users\st032080\Documents\Projects\computational_science\2015_interpolation\comp_sci\task1_interpolation\task1_interpolation\bin\Debug\task1_interpolation.pdb
+C:\Users\st032080\Documents\Projects\computational_science\2015_interpolation\comp_sci\task1_interpolation\task1_interpolation\bin\Debug\GoogleChartSharp.xml

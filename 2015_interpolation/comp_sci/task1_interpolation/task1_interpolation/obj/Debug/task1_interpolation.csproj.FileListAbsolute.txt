@@ -1,0 +1,10 @@
+c:\users\st032080\documents\visual studio 2012\Projects\comp_sci\task1_interpolation\task1_interpolation\bin\Debug\task1_interpolation.exe.config
+c:\users\st032080\documents\visual studio 2012\Projects\comp_sci\task1_interpolation\task1_interpolation\bin\Debug\task1_interpolation.exe
+c:\users\st032080\documents\visual studio 2012\Projects\comp_sci\task1_interpolation\task1_interpolation\bin\Debug\task1_interpolation.pdb
+c:\users\st032080\documents\visual studio 2012\Projects\comp_sci\task1_interpolation\task1_interpolation\obj\Debug\task1_interpolation.csprojResolveAssemblyReference.cache
+c:\users\st032080\documents\visual studio 2012\Projects\comp_sci\task1_interpolation\task1_interpolation\obj\Debug\task1_interpolation.Properties.Resources.resources
+c:\users\st032080\documents\visual studio 2012\Projects\comp_sci\task1_interpolation\task1_interpolation\obj\Debug\task1_interpolation.csproj.GenerateResource.Cache
+c:\users\st032080\documents\visual studio 2012\Projects\comp_sci\task1_interpolation\task1_interpolation\obj\Debug\task1_interpolation.exe
+c:\users\st032080\documents\visual studio 2012\Projects\comp_sci\task1_interpolation\task1_interpolation\obj\Debug\task1_interpolation.pdb
+c:\users\st032080\documents\visual studio 2012\Projects\comp_sci\task1_interpolation\task1_interpolation\bin\Debug\GoogleChartSharp.xml
+c:\users\st032080\documents\visual studio 2012\Projects\comp_sci\task1_interpolation\task1_interpolation\obj\Debug\task1_interpolation.GraphForm.resources

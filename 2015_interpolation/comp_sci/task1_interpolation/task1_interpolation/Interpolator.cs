@@ -34,28 +34,55 @@ namespace task1_interpolation
         private Func<float, float> f;
         private int nodes_count;
         Interval interval;
+        bool equidistant;
                
 
-        public Interpolator(Func<float, float> _f, int _nodes_count, Interval _interval) {
-            init(_f, _nodes_count, _interval);
+        public Interpolator(Func<float, float> _f, int _nodes_count, Interval _interval, bool _equidistant = true) {
+            init(_f, _nodes_count, _interval, _equidistant);
         }
 
 
-        private void init(Func<float, float> _f, int _nodes_count,  Interval _interval){
+        private void init(Func<float, float> _f, int _nodes_count,  Interval _interval, bool _equidistant = true){
             f = _f;
             nodes_count = _nodes_count;
             interval = _interval;
+            equidistant = _equidistant;
 
             var nodes = generateSpecialInterpolationNodes();
 
-            Console.WriteLine(string.Join(", ", nodes));
-            
+            Console.WriteLine(string.Join(", ", nodes));            
+        }
+
+
+        public float lagrangePolynom(float x) {           
+
+            List<float> nodes;
+            if (equidistant)
+                nodes = generateEquidistantInterpolationNodes();
+            else
+                nodes = generateSpecialInterpolationNodes();
+
+
+            float result = 0;
+            for (int i = 0; i <= nodes_count; i++) {
+                float summand = 1;
+                for (int j = 0; j <= nodes_count; j++) {
+                    if (i != j)
+                        summand *= (x - nodes[j]) / (nodes[i] - nodes[j]);
+                }
+
+                summand *= f(nodes[i]);
+
+                result += summand;
+            }
+
+            return result;
         }
 
 
         private List<float> generateSpecialInterpolationNodes(){
             List<float> nodes = new List<float>();
-
+            
             for (var i = 0; i <= nodes_count; i++) {
                 nodes.Insert(0, 
                         (float)0.5 * 

@@ -45,6 +45,8 @@ namespace task1_interpolation
             lineChart.SetDatasetColors(new string[] { "FF0000", "008000", "0000ff", "ffa000" });
 
 
+            // TODO: set range depending on min and max axis values
+
             ChartAxis topAxis = new ChartAxis(ChartAxisType.Left);
             //bottomAxis.SetRange(0, 500);
             topAxis.Color = colorHex;

@@ -18,3 +18,10 @@ C:\Users\st032080\Documents\Projects\computational_science\2015_interpolation\co
 C:\Users\st032080\Documents\Projects\computational_science\2015_interpolation\comp_sci\task1_interpolation\task1_interpolation\bin\Debug\task1_interpolation.exe
 C:\Users\st032080\Documents\Projects\computational_science\2015_interpolation\comp_sci\task1_interpolation\task1_interpolation\bin\Debug\task1_interpolation.pdb
 C:\Users\st032080\Documents\Projects\computational_science\2015_interpolation\comp_sci\task1_interpolation\task1_interpolation\bin\Debug\GoogleChartSharp.xml
+S:\Projects\computational_science\2015_interpolation\comp_sci\task1_interpolation\task1_interpolation\bin\Debug\task1_interpolation.exe.config
+S:\Projects\computational_science\2015_interpolation\comp_sci\task1_interpolation\task1_interpolation\obj\Debug\task1_interpolation.exe
+S:\Projects\computational_science\2015_interpolation\comp_sci\task1_interpolation\task1_interpolation\obj\Debug\task1_interpolation.pdb
+S:\Projects\computational_science\2015_interpolation\comp_sci\task1_interpolation\task1_interpolation\obj\Debug\task1_interpolation.csprojResolveAssemblyReference.cache
+S:\Projects\computational_science\2015_interpolation\comp_sci\task1_interpolation\task1_interpolation\obj\Debug\task1_interpolation.GraphForm.resources
+S:\Projects\computational_science\2015_interpolation\comp_sci\task1_interpolation\task1_interpolation\obj\Debug\task1_interpolation.Properties.Resources.resources
+S:\Projects\computational_science\2015_interpolation\comp_sci\task1_interpolation\task1_interpolation\obj\Debug\task1_interpolation.csproj.GenerateResource.Cache

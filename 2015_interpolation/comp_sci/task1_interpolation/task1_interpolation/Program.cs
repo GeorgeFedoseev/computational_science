@@ -20,38 +20,41 @@ namespace task1_interpolation
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
-         
-          /* float[] datax = new float[]{0, 1, 2, 3, 4, 5, 6};
-           float[] datay = new float[]{0, 1, 4, 9, 16, 25, 36};
+            var interval = new Interval(1, 100);
+            double step = 0.01f;
 
-           float[] datax2 = new float[] { 0, 1, 2, 3, 4, 5, 6 };
-           float[] datay2 = new float[] { 0, 1, 2, 3, 4, 5, 6 };
+            /* FOR f(x) */
+            Interpolator interpolator_f = new Interpolator(f, 2, interval);
 
-           List<float[]> datasets = new List<float[]>() { datax, datay, datax2, datay2 };
-
-
-           Graph gr = new Graph(datasets, (string imageUrl)=>{
-               Console.WriteLine(imageUrl);
-               Application.Run(new GraphForm(imageUrl));
-           });*/
+            var originalGraph_f = GraphGenerator.generateGraphForFunc("original", f, interval, step, Color.Red);
+            var interpolatedGraph_f = GraphGenerator.generateGraphForFunc("interpolated", interpolator_f.lagrangePolynom, interval, step * 10, Color.Green);
 
 
-            var interval = new Interval(1, 200);
-            double step = 0.001f;
+            List<GraphData> graphsList_f = new List<GraphData>() {
+                originalGraph_f, interpolatedGraph_f
+            };
 
-            Interpolator interpolator = new Interpolator(f, 2, interval);
-
-            var originalGraph = GraphGenerator.generateGraphForFunc("x^2 - 1 - ln(x)", f, interval, step, Color.Red);
-            var interpolatedGraph = GraphGenerator.generateGraphForFunc("interpolated", interpolator.lagrangePolynom, interval, step, Color.Green);
+            Graph form_f = new Graph("Lagrange interpolation for f(x)", graphsList_f);
+            form_f.Show();
 
 
-            List<GraphData> graphsList = new List<GraphData>() {
-                originalGraph, interpolatedGraph
+
+            /* FOR h(x) */
+            Interpolator interpolator_h = new Interpolator(h, 2, interval);
+            var originalGraph_h= GraphGenerator.generateGraphForFunc("original", h, interval, step, Color.Red);
+            var interpolatedGraph_h = GraphGenerator.generateGraphForFunc("interpolated", interpolator_h.lagrangePolynom, interval, step * 10, Color.Green);
+
+
+            List<GraphData> graphsList_h = new List<GraphData>() {
+                originalGraph_h, interpolatedGraph_h
             };
 
 
-            Application.Run(new Graph("Lagrange interpolation", graphsList));
+            Graph form_h = new Graph("Lagrange interpolation for h(x)", graphsList_h);
+            form_h.Show();
 
+
+            Application.Run(form_f);
 
             // dont exit app
            // while (true) ;            
@@ -61,6 +64,10 @@ namespace task1_interpolation
         public static double f(double x)
         {
             return x * x - 1 - Math.Log(x);
+        }
+
+        public static double h(double x) {
+            return Math.Abs(x) * f(x);
         }
 
 

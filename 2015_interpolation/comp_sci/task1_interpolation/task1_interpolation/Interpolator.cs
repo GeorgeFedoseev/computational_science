@@ -50,7 +50,7 @@ namespace task1_interpolation
 
             var nodes = generateSpecialInterpolationNodes();
 
-            Console.WriteLine(string.Join(", ", nodes));            
+          //  Console.WriteLine(string.Join(", ", nodes));            
         }
 
 
@@ -107,8 +107,5 @@ namespace task1_interpolation
             return nodes;
         }
 
-        
-
-        
     }
 }

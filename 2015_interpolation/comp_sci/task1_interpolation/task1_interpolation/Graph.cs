@@ -95,24 +95,10 @@ namespace task1_interpolation
 		private void GraphForm_Load( object sender, System.EventArgs e )
 		{
 			zedGraph.IsShowPointValues = true;
-
-           
-
-         
             
-			zedGraph.GraphPane.Title = title;
+			zedGraph.GraphPane.Title  = this.Text = title;
 
             this.TopLevelControl.Size = new Size(width, height);
-
-            
-			/*double[] x = new double[100];
-			double[] y = new double[100];
-			int	i;
-			for ( i=0; i<100; i++ )
-			{
-				x[i] = (double) i / 100.0 * Math.PI * 2.0;
-				y[i] = Math.Sin( x[i] );
-			}*/
 
             foreach (GraphData graph in graphsList) {
                 zedGraph.GraphPane.AddCurve(graph.getTitle(), graph.getData(), graph.getColor(), SymbolType.None);

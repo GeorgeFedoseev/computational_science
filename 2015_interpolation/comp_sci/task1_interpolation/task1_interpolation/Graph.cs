@@ -1,72 +1,104 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
-using GoogleChartSharp;
+using ZedGraph;
 
 namespace task1_interpolation
 {
-    class Graph
+    class Graph:  System.Windows.Forms.Form
     {
+        private ZedGraphControl zedGraph;
 
-        public List<float[]> datasets;
-        int graphWidth, graphHeight;
-        Action<string> imageReceivedCallback;
-        string colorHex;
+        
+        private System.ComponentModel.Container components = null;
 
+        public Graph()
+		{
+			//
+			// Required for Windows Form Designer support
+			//
+			InitializeComponent();
+		}
 
-        public Graph(List<float[]> _datasets, Action<string> _callback)
+		/// <summary>
+		/// Clean up any resources being used.
+		/// </summary>
+		protected override void Dispose( bool disposing )
+		{
+			if( disposing )
+			{
+				if (components != null) 
+				{
+					components.Dispose();
+				}
+			}
+			base.Dispose( disposing );
+		}
+
+		#region Windows Form Designer generated code
+		/// <summary>
+		/// Required method for Designer support - do not modify
+		/// the contents of this method with the code editor.
+		/// </summary>
+		private void InitializeComponent()
+		{
+            this.zedGraph = new ZedGraph.ZedGraphControl();
+            this.SuspendLayout();
+            // 
+            // zedGraph
+            // 
+            this.zedGraph.IsShowPointValues = false;
+            this.zedGraph.Location = new System.Drawing.Point(0, 0);
+            this.zedGraph.Name = "zedGraph";
+            this.zedGraph.PointValueFormat = "G";
+            this.zedGraph.Size = new System.Drawing.Size(680, 414);
+            this.zedGraph.TabIndex = 0;
+            this.zedGraph.Load += new System.EventHandler(this.zedGraph_Load);
+            // 
+            // Graph
+            // 
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
+            
+            this.AutoScaleBaseSize = new System.Drawing.Size(5, 13);
+            this.ClientSize = new System.Drawing.Size(680, 414);
+            this.Controls.Add(this.zedGraph);
+            this.Name = "Graph";
+            this.Text = "Form1";
+            this.Load += new System.EventHandler(this.Form1_Load);
+            this.ResumeLayout(false);
+
+		}
+		#endregion
+
+		/// <summary>
+		/// The main entry point for the application.
+		/// </summary>
+		
+
+		private void Form1_Load( object sender, System.EventArgs e )
+		{
+			zedGraph.IsShowPointValues = true;
+			zedGraph.GraphPane.Title = "Test Case for C#";
+			double[] x = new double[100];
+			double[] y = new double[100];
+			int	i;
+			for ( i=0; i<100; i++ )
+			{
+				x[i] = (double) i / 100.0 * Math.PI * 2.0;
+				y[i] = Math.Sin( x[i] );
+			}
+			zedGraph.GraphPane.AddCurve( "Sine Wave", x, y, Color.Red, SymbolType.Square );
+			zedGraph.AxisChange();
+			zedGraph.Invalidate();
+		}
+
+        private void zedGraph_Load(object sender, EventArgs e)
         {
-            init(_datasets, 400, 400, _callback);
-        }
 
-        public Graph(List<float[]> _datasets, int _graphWidth, int _graphHeight, Action<string> _callback)
-        {
-            init(_datasets, _graphWidth, _graphHeight, _callback);
-           
-        }
-
-        void init(List<float[]> _datasets, int _graphWidth, int _graphHeight, Action<string> _callback, string _colorHex = "FF0000")
-        {
-            datasets = _datasets;
-            graphWidth = _graphWidth;
-            graphHeight = _graphHeight;
-
-            imageReceivedCallback = _callback;
-
-            colorHex = _colorHex;           
-
-            LineChart lineChart = new LineChart(graphWidth, graphHeight, LineChartType.MultiDataSet);
-            lineChart.SetData(datasets);
-
-            // Optional : Provide a hex color for each pair of data sets
-            lineChart.SetDatasetColors(new string[] { "FF0000", "008000", "0000ff", "ffa000" });
-
-
-            // TODO: set range depending on min and max axis values
-
-            ChartAxis topAxis = new ChartAxis(ChartAxisType.Left);
-            //bottomAxis.SetRange(0, 500);
-            topAxis.Color = colorHex;
-            //bottomAxis.FontSize = 14;
-            lineChart.AddAxis(topAxis);
-
-            ChartAxis bottomAxis = new ChartAxis(ChartAxisType.Bottom);
-            //bottomAxis.SetRange(0, 500);
-            bottomAxis.Color = colorHex;
-            //bottomAxis.FontSize = 14;
-            lineChart.AddAxis(bottomAxis);
-
-            // Optional : Provide a label for each pair of data sets
-            //lineChart.SetLegend(new string[] { "First"});
-
-
-            Async.SetTimeout(() => {
-                string url = lineChart.GetUrl();
-                imageReceivedCallback(lineChart.GetUrl());
-            }, 0);
         }
 
 

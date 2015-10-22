@@ -4,7 +4,6 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-using GoogleChartSharp;
 
 namespace task1_interpolation
 {
@@ -62,11 +61,7 @@ namespace task1_interpolation
             };
 
 
-            Graph gr = new Graph(datasets, (string imageUrl) =>
-            {
-                Console.WriteLine(imageUrl);
-                Application.Run(new GraphForm(imageUrl));
-            });
+            Application.Run(new Graph());
 
 
             // dont exit app

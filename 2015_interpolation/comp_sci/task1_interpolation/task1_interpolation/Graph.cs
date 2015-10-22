@@ -4,23 +4,41 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 using ZedGraph;
 
 namespace task1_interpolation
 {
+
     class Graph:  System.Windows.Forms.Form
     {
         private ZedGraphControl zedGraph;
 
+        private int width, height;
+
+        private List<GraphData> graphsList;
+
+        private string title;
+
         
         private System.ComponentModel.Container components = null;
 
-        public Graph()
-		{
+        public Graph(string _title, List<GraphData> _graphsList, int _width = 600, int _height = 400)
+		{            
+            title = _title;
+            graphsList = _graphsList;
+
+            width = _width;
+            height = _height;
+
+            
+            
+
 			//
 			// Required for Windows Form Designer support
 			//
 			InitializeComponent();
+            
 		}
 
 		/// <summary>
@@ -60,45 +78,75 @@ namespace task1_interpolation
             // 
             // Graph
             // 
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-            this.MaximizeBox = false;
-            
             this.AutoScaleBaseSize = new System.Drawing.Size(5, 13);
-            this.ClientSize = new System.Drawing.Size(680, 414);
+            this.ClientSize = new System.Drawing.Size(680, 412);
             this.Controls.Add(this.zedGraph);
+            this.MaximizeBox = false;
             this.Name = "Graph";
-            this.Text = "Form1";
-            this.Load += new System.EventHandler(this.Form1_Load);
+            this.Text = "GraphForm";
+            this.Load += new System.EventHandler(this.GraphForm_Load);
+            this.Resize += new System.EventHandler(this.GraphForm_Resize);
             this.ResumeLayout(false);
 
 		}
 		#endregion
-
-		/// <summary>
-		/// The main entry point for the application.
-		/// </summary>
 		
 
-		private void Form1_Load( object sender, System.EventArgs e )
+		private void GraphForm_Load( object sender, System.EventArgs e )
 		{
 			zedGraph.IsShowPointValues = true;
-			zedGraph.GraphPane.Title = "Test Case for C#";
-			double[] x = new double[100];
+
+           
+
+         
+            
+			zedGraph.GraphPane.Title = title;
+
+            this.TopLevelControl.Size = new Size(width, height);
+
+            
+			/*double[] x = new double[100];
 			double[] y = new double[100];
 			int	i;
 			for ( i=0; i<100; i++ )
 			{
 				x[i] = (double) i / 100.0 * Math.PI * 2.0;
 				y[i] = Math.Sin( x[i] );
-			}
-			zedGraph.GraphPane.AddCurve( "Sine Wave", x, y, Color.Red, SymbolType.Square );
-			zedGraph.AxisChange();
-			zedGraph.Invalidate();
+			}*/
+
+            foreach (GraphData graph in graphsList) {
+                zedGraph.GraphPane.AddCurve(graph.getTitle(), graph.getData(), graph.getColor(), SymbolType.None);
+            }
+
+            UpdateGraph();
 		}
 
         private void zedGraph_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void GraphForm_Resize(object sender, System.EventArgs e)
+        {
+            Control control = (Control)sender;
+            /*
+            // Ensure the Form remains square (Height = Width).
+            if (control.Size.Height != control.Size.Width)
+            {
+                control.Size = new Size(control.Size.Width, control.Size.Width);
+            }*/
+
+            width = control.Size.Width;
+            height = control.Size.Height;
+
+            UpdateGraph();            
+        }
+
+
+        private void UpdateGraph() {
+            this.zedGraph.Size = new System.Drawing.Size(width - 15, height - 40);
+            zedGraph.AxisChange();
+            zedGraph.Invalidate();
         }
 
 

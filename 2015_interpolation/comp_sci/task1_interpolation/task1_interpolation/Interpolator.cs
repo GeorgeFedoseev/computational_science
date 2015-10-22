@@ -10,20 +10,20 @@ namespace task1_interpolation
 {
 
     public class Interval {
-        public float from, to;
+        public double from, to;
 
-        public float length { 
+        public double length { 
             get {
                 return getlength();
              }
         }
 
-        public Interval(float _from, float _to){
+        public Interval(double _from, double _to){
             from = _from;
             to = _to;          
         }
 
-        private float getlength()
+        private double getlength()
         {
             return to - from;
         }
@@ -31,18 +31,18 @@ namespace task1_interpolation
 
     class Interpolator
     {
-        private Func<float, float> f;
+        private Func<double, double> f;
         private int nodes_count;
         Interval interval;
         bool equidistant;
                
 
-        public Interpolator(Func<float, float> _f, int _nodes_count, Interval _interval, bool _equidistant = true) {
+        public Interpolator(Func<double, double> _f, int _nodes_count, Interval _interval, bool _equidistant = true) {
             init(_f, _nodes_count, _interval, _equidistant);
         }
 
 
-        private void init(Func<float, float> _f, int _nodes_count,  Interval _interval, bool _equidistant = true){
+        private void init(Func<double, double> _f, int _nodes_count,  Interval _interval, bool _equidistant = true){
             f = _f;
             nodes_count = _nodes_count;
             interval = _interval;
@@ -54,18 +54,18 @@ namespace task1_interpolation
         }
 
 
-        public float lagrangePolynom(float x) {           
+        public double lagrangePolynom(double x) {           
 
-            List<float> nodes;
+            List<double> nodes;
             if (equidistant)
                 nodes = generateEquidistantInterpolationNodes();
             else
                 nodes = generateSpecialInterpolationNodes();
 
 
-            float result = 0;
+            double result = 0;
             for (int i = 0; i <= nodes_count; i++) {
-                float summand = 1;
+                double summand = 1;
                 for (int j = 0; j <= nodes_count; j++) {
                     if (i != j)
                         summand *= (x - nodes[j]) / (nodes[i] - nodes[j]);
@@ -80,14 +80,14 @@ namespace task1_interpolation
         }
 
 
-        private List<float> generateSpecialInterpolationNodes(){
-            List<float> nodes = new List<float>();
+        private List<double> generateSpecialInterpolationNodes(){
+            List<double> nodes = new List<double>();
             
             for (var i = 0; i <= nodes_count; i++) {
                 nodes.Insert(0, 
-                        (float)0.5 * 
+                        (double)0.5 * 
                             (interval.length * 
-                                (float)Math.Cos((2 * (float)i + 1) / (2 * (nodes_count + 1)) * (float)Math.PI)
+                                (double)Math.Cos((2 * (double)i + 1) / (2 * (nodes_count + 1)) * (double)Math.PI)
                                 + interval.from + interval.to)
                     );
             }
@@ -95,13 +95,13 @@ namespace task1_interpolation
             return nodes;
         }
 
-        private List<float> generateEquidistantInterpolationNodes()
+        private List<double> generateEquidistantInterpolationNodes()
         {
-            List<float> nodes = new List<float>();
+            List<double> nodes = new List<double>();
 
             for (var i = 0; i <= nodes_count; i++)
             {
-                nodes.Add(interval.from + (float)i * interval.length / nodes_count);
+                nodes.Add(interval.from + (double)i * interval.length / nodes_count);
             }
 
             return nodes;

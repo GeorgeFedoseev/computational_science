@@ -1,24 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using ZedGraph;
 
 
 namespace task1_interpolation
 {
-
-    public class Dataset
-    {
-        public float[] nodes, values;
-
-        public Dataset(float[] _nodes, float[] _values)
-        {
-            nodes = _nodes;
-            values = _values;
-        }
-    }
-
 
     static class Program
     {
@@ -46,51 +36,33 @@ namespace task1_interpolation
            });*/
 
 
-            var interval = new Interval(1, 20);
-            float step = 1f;
+            var interval = new Interval(1, 200);
+            double step = 0.001f;
 
-            Interpolator interpolator = new Interpolator(f, 10, interval);
+            Interpolator interpolator = new Interpolator(f, 2, interval);
 
-            var originalFunctionDataset = generateDatasetsForFunc(f, interval, step);
-            var interpolatedFunctionDataset = generateDatasetsForFunc(interpolator.lagrangePolynom, interval, step);            
+            var originalGraph = GraphGenerator.generateGraphForFunc("x^2 - 1 - ln(x)", f, interval, step, Color.Red);
+            var interpolatedGraph = GraphGenerator.generateGraphForFunc("interpolated", interpolator.lagrangePolynom, interval, step, Color.Green);
 
 
-            List<float[]> datasets = new List<float[]>() {
-                originalFunctionDataset.nodes, originalFunctionDataset.values,
-                interpolatedFunctionDataset.nodes, interpolatedFunctionDataset.values
+            List<GraphData> graphsList = new List<GraphData>() {
+                originalGraph, interpolatedGraph
             };
 
 
-            Application.Run(new Graph());
+            Application.Run(new Graph("Lagrange interpolation", graphsList));
 
 
             // dont exit app
-            while (true) ;            
+           // while (true) ;            
         }
-               
 
-        public static float f(float x)
+
+        public static double f(double x)
         {
-            return x * x - 1 - (float)Math.Log(x);
+            return x * x - 1 - Math.Log(x);
         }
 
-
-        /* UTILS */
-        private static Dataset generateDatasetsForFunc(Func<float, float> _f, Interval interval, float step)
-        {           
-            List<float> nodes = new List<float>();
-            List<float> values = new List<float>();
-
-            for (int i = 0; i < interval.length / step; i++) {
-                float node = interval.from + (float)i * step;
-                float value = _f(node);
-
-                nodes.Add(node);
-                values.Add(value);
-            }
-
-            return new Dataset(nodes.ToArray(), values.ToArray());
-        }
 
         
     }

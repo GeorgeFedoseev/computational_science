@@ -1,0 +1,10 @@
+S:\Projects\computational_science\2015_minimization\2015_minimization\bin\Debug\2015_minimization.exe.config
+S:\Projects\computational_science\2015_minimization\2015_minimization\bin\Debug\2015_minimization.exe
+S:\Projects\computational_science\2015_minimization\2015_minimization\bin\Debug\2015_minimization.pdb
+S:\Projects\computational_science\2015_minimization\2015_minimization\bin\Debug\ZedGraph.dll
+S:\Projects\computational_science\2015_minimization\2015_minimization\obj\Debug\2015_minimization.csprojResolveAssemblyReference.cache
+S:\Projects\computational_science\2015_minimization\2015_minimization\obj\Debug\_2015_minimization.Graph.resources
+S:\Projects\computational_science\2015_minimization\2015_minimization\obj\Debug\_2015_minimization.Properties.Resources.resources
+S:\Projects\computational_science\2015_minimization\2015_minimization\obj\Debug\2015_minimization.csproj.GenerateResource.Cache
+S:\Projects\computational_science\2015_minimization\2015_minimization\obj\Debug\2015_minimization.exe
+S:\Projects\computational_science\2015_minimization\2015_minimization\obj\Debug\2015_minimization.pdb

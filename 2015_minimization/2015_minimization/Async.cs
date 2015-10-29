@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace task1_interpolation
+namespace _2015_minimization
 {
     public static class Async
     {

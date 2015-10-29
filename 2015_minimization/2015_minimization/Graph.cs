@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using ZedGraph;
 
-namespace task1_interpolation
+namespace _2015_minimization
 {
 
     class Graph:  System.Windows.Forms.Form

@@ -7,7 +7,7 @@ using System.Windows.Forms;
 using ZedGraph;
 
 
-namespace task1_interpolation
+namespace _2015_minimization
 {
 
     static class Program
@@ -20,7 +20,7 @@ namespace task1_interpolation
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
-            var interval = new Interval(1, 100);
+         /*   var interval = new Interval(1, 100);
             double step = 0.01f;
 
            
@@ -37,16 +37,30 @@ namespace task1_interpolation
             form_f.Show();           
 
 
-            Application.Run(form_f);
+            Application.Run(form_f);*/
+
+
+            //////////////
+
+
+            Vector3 v = new Vector3(1, 2, 3);
+            Console.WriteLine((v*2).ToString());
+            Console.WriteLine(v.x);
+            Console.WriteLine(f(v));
 
             // dont exit app
            // while (true) ;            
         }
 
 
-        public static double f(double x)
+        public static double f(Vector3 v)
         {
-            return x * x - 1 - Math.Log(x);
+            double N = 18;
+            return 2 * v.x * v.x + (3 + 0.1 * N) * v.y * v.y 
+                + (4 + 0.1 * N) * v.z * v.z
+                + v.x * v.y - v.y * v.z
+                + v.x * v.z + v.x
+                - 2 * v.y + 3 * v.z + N;
         }
         
     }

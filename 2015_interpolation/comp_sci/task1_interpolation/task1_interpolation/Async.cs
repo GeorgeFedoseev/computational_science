@@ -25,7 +25,7 @@ namespace task1_interpolation
 
         public static IDisposable SetTimeout(Action method, int delayInMilliseconds)
         {
-            if (delayInMilliseconds == 0)
+            if (delayInMilliseconds <= 0)
                 delayInMilliseconds = 1;
 
             System.Timers.Timer timer = new System.Timers.Timer(delayInMilliseconds);

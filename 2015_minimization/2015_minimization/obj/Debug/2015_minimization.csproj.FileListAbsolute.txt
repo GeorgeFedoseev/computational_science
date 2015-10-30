@@ -8,3 +8,12 @@ S:\Projects\computational_science\2015_minimization\2015_minimization\obj\Debug\
 S:\Projects\computational_science\2015_minimization\2015_minimization\obj\Debug\2015_minimization.csproj.GenerateResource.Cache
 S:\Projects\computational_science\2015_minimization\2015_minimization\obj\Debug\2015_minimization.exe
 S:\Projects\computational_science\2015_minimization\2015_minimization\obj\Debug\2015_minimization.pdb
+C:\Users\st032080\Documents\Projects\computational_science\2015_minimization\2015_minimization\bin\Debug\2015_minimization.exe.config
+C:\Users\st032080\Documents\Projects\computational_science\2015_minimization\2015_minimization\bin\Debug\2015_minimization.exe
+C:\Users\st032080\Documents\Projects\computational_science\2015_minimization\2015_minimization\bin\Debug\2015_minimization.pdb
+C:\Users\st032080\Documents\Projects\computational_science\2015_minimization\2015_minimization\bin\Debug\ZedGraph.dll
+C:\Users\st032080\Documents\Projects\computational_science\2015_minimization\2015_minimization\obj\Debug\_2015_minimization.Graph.resources
+C:\Users\st032080\Documents\Projects\computational_science\2015_minimization\2015_minimization\obj\Debug\_2015_minimization.Properties.Resources.resources
+C:\Users\st032080\Documents\Projects\computational_science\2015_minimization\2015_minimization\obj\Debug\2015_minimization.csproj.GenerateResource.Cache
+C:\Users\st032080\Documents\Projects\computational_science\2015_minimization\2015_minimization\obj\Debug\2015_minimization.exe
+C:\Users\st032080\Documents\Projects\computational_science\2015_minimization\2015_minimization\obj\Debug\2015_minimization.pdb

@@ -41,6 +41,35 @@ namespace _2015_minimization
             return Math.Sqrt(x * x + y * y + z * z);
         }
 
+        public static double drv(Func<Vector3, double> f, Vector3 p, Vector3 dir)
+        {
+            double h = 0.000001;
+            return (-f(new Vector3(p.x + 2 * h * dir.x, p.y + 2 * h * dir.y, p.z + 2 * h * dir.z))
+                    + 8 * f(new Vector3(p.x + h * dir.x, p.y + h * dir.y, p.z + h * dir.z))
+                    - 8 * f(new Vector3(p.x - h * dir.x, p.y - h * dir.y, p.z - h * dir.z))
+                    + f(new Vector3(p.x - 2 * h * dir.x, p.y - 2 * h * dir.y, p.z - 2 * h * dir.z))) / (12 * h);
+        }
+
+        public static Vector3 grad(Func<Vector3, double> f, Vector3 p)
+        {
+            return new Vector3(
+                drv(f, p, new Vector3(1, 0, 0)),
+                drv(f, p, new Vector3(0, 1, 0)),
+                drv(f, p, new Vector3(0, 0, 1))
+            );
+        }
+
+        public static Vector3 grad_n(Func<Vector3, double> f, Vector3 p)
+        {
+            var gr = grad(f, p);
+            var n = gr.length();
+            return new Vector3(
+                    gr.x / n,
+                    gr.y / n,
+                    gr.z / n
+                );
+        }
+
         static public Vector3 operator -(Vector3 v){
             return new Vector3(-v.m);
         }
@@ -57,11 +86,16 @@ namespace _2015_minimization
             return new Vector3(v.m*k);
         }
 
+        static public Vector3 operator *(double k, Vector3 v)
+        {
+            return v * k;
+        }
+
         static public Vector3 operator /(Vector3 v, double k){
             return new Vector3(v.m/k);
         }
 
-        public string ToString() {
+        public override string  ToString() {
             return m.ToString();
         }
     }

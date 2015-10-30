@@ -12,12 +12,10 @@ C:\Users\st032080\Documents\Projects\computational_science\2015_interpolation\co
 C:\Users\st032080\Documents\Projects\computational_science\2015_interpolation\comp_sci\task1_interpolation\task1_interpolation\obj\Debug\task1_interpolation.exe
 C:\Users\st032080\Documents\Projects\computational_science\2015_interpolation\comp_sci\task1_interpolation\task1_interpolation\obj\Debug\task1_interpolation.pdb
 C:\Users\st032080\Documents\Projects\computational_science\2015_interpolation\comp_sci\task1_interpolation\task1_interpolation\obj\Debug\task1_interpolation.csprojResolveAssemblyReference.cache
-C:\Users\st032080\Documents\Projects\computational_science\2015_interpolation\comp_sci\task1_interpolation\task1_interpolation\obj\Debug\task1_interpolation.GraphForm.resources
 C:\Users\st032080\Documents\Projects\computational_science\2015_interpolation\comp_sci\task1_interpolation\task1_interpolation\obj\Debug\task1_interpolation.Properties.Resources.resources
 C:\Users\st032080\Documents\Projects\computational_science\2015_interpolation\comp_sci\task1_interpolation\task1_interpolation\obj\Debug\task1_interpolation.csproj.GenerateResource.Cache
 C:\Users\st032080\Documents\Projects\computational_science\2015_interpolation\comp_sci\task1_interpolation\task1_interpolation\bin\Debug\task1_interpolation.exe
 C:\Users\st032080\Documents\Projects\computational_science\2015_interpolation\comp_sci\task1_interpolation\task1_interpolation\bin\Debug\task1_interpolation.pdb
-C:\Users\st032080\Documents\Projects\computational_science\2015_interpolation\comp_sci\task1_interpolation\task1_interpolation\bin\Debug\GoogleChartSharp.xml
 S:\Projects\computational_science\2015_interpolation\comp_sci\task1_interpolation\task1_interpolation\bin\Debug\task1_interpolation.exe.config
 S:\Projects\computational_science\2015_interpolation\comp_sci\task1_interpolation\task1_interpolation\obj\Debug\task1_interpolation.exe
 S:\Projects\computational_science\2015_interpolation\comp_sci\task1_interpolation\task1_interpolation\obj\Debug\task1_interpolation.pdb
@@ -28,3 +26,5 @@ S:\Projects\computational_science\2015_interpolation\comp_sci\task1_interpolatio
 S:\Projects\computational_science\2015_interpolation\comp_sci\task1_interpolation\task1_interpolation\bin\Debug\task1_interpolation.pdb
 S:\Projects\computational_science\2015_interpolation\comp_sci\task1_interpolation\task1_interpolation\bin\Debug\ZedGraph.dll
 S:\Projects\computational_science\2015_interpolation\comp_sci\task1_interpolation\task1_interpolation\obj\Debug\task1_interpolation.Graph.resources
+C:\Users\st032080\Documents\Projects\computational_science\2015_interpolation\comp_sci\task1_interpolation\task1_interpolation\bin\Debug\ZedGraph.dll
+C:\Users\st032080\Documents\Projects\computational_science\2015_interpolation\comp_sci\task1_interpolation\task1_interpolation\obj\Debug\task1_interpolation.Graph.resources

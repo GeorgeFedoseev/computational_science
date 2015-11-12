@@ -33,15 +33,19 @@ namespace _2015_minimization
     }
 
     public class MinimizationResult : ResultPointValue {
+        public string methodName;
         public int interations;
 
-        public MinimizationResult(Vector3 _p, double _v, int _iterations) : base(_p, _v) {
+        public MinimizationResult(Vector3 _p, double _v, int _iterations, string _methodName = null) : base(_p, _v) {
             interations = _iterations;
+            methodName = _methodName;
         }
 
         public override string ToString()
         {
-            return "MinimizationResult("+base.ToString()+string.Format(" | iterations: {0}", interations)+")";
+            return "MinimizationResult("+base.ToString()+string.Format(" | iterations: {0}", interations)
+                +((methodName!=null)?"; method: "+methodName:"")
+                +")";
         }
     }
 

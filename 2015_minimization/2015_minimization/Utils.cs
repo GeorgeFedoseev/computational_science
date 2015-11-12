@@ -23,13 +23,26 @@ namespace _2015_minimization
 
         public double f(Vector3 v)
         {
-            return 0.5 * (v.m.T() * A * v.m).get(0, 0) + (v.m.T() * b.m).get(0, 0) + K;
+            return 0.5 * (v.m.T() * A * v.m).scalar() + (v.m.T() * b.m).scalar() + K;
         }
 
         public Vector3 grad(Vector3 v) {
             return new Vector3(A * v.m + b.m); 
         }
         
+    }
+
+    public class MinimizationResult : ResultPointValue {
+        public int interations;
+
+        public MinimizationResult(Vector3 _p, double _v, int _iterations) : base(_p, _v) {
+            interations = _iterations;
+        }
+
+        public override string ToString()
+        {
+            return "MinimizationResult("+base.ToString()+string.Format(" | iterations: {0}", interations)+")";
+        }
     }
 
     public class ResultPointValue
@@ -43,7 +56,7 @@ namespace _2015_minimization
             value = _v;
         }
 
-        public string ToString() {
+        public override string ToString() {
             return string.Format("func({0}, {1}, {2}) -> {3}", point.x, point.y, point.z, value);
         }
     }

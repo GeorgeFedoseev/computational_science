@@ -19,19 +19,27 @@ namespace _2015_minimization
             accuracy = _accuracy;
         }
 
-
-
-        public ResultPointValue coordinateDescent(Func<Vector3, double> f, Vector3 startPoint) {
+        public MinimizationResult coordinateDescent(Vector3 startPoint) {
             Vector3 currentPoint, prevPoint;
             currentPoint = startPoint;
 
+            int _iter_count = 0;
+
+            int i = 1;
             do{
+                var ei = new Vector3(Matrix.unitVector(3, i));
+                double step = -ei*new Vector3(func.A*currentPoint.m + func.b.m)
+                                / (ei*new Vector3(func.A*ei.m)); // мю k-ое
 
-            }while();
+                prevPoint = currentPoint;
+                currentPoint = currentPoint+ei*step;
+                //Console.WriteLine(string.Format("accuracy: {0} (need: {0})", (func.A * currentPoint.m + func.b.m).eNorm(), accuracy));
 
-            var grad_n = Vector3.grad_n(f, currentPoint);
-
-            return new ResultPointValue(new Vector3(new Matrix(3)), 0);
+                i++; if(i > 3) i = 1;                
+                _iter_count++;
+            } while ((func.A * currentPoint.m + func.b.m).eNorm() > accuracy);
+            
+            return new MinimizationResult(currentPoint, func.f(currentPoint), _iter_count);
         }
 
         private ResultPointValue linearDescent(Func<Vector3, double> f, Vector3 startPoint, Vector3 direction, 

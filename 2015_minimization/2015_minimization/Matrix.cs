@@ -51,6 +51,12 @@ namespace _2015_minimization
             }
         }
 
+        public static Matrix unitVector(int n, int i) { 
+            var uv = new Matrix(n, 1);
+            uv.set(i-1, 0, 1);
+            return uv;
+        }
+
 
 
 
@@ -375,6 +381,10 @@ namespace _2015_minimization
         public double get(int i, int j)
         {
             return data[i, j];
+        }
+
+        public double scalar() {
+            return get(0, 0);
         }
 
         public void set(int i, int j, double val)

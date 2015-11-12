@@ -33,6 +33,9 @@ namespace _2015_minimization
             func = new QuadraticFunc(A, b, K);
 
             Minimizer minimizer = new Minimizer(func, eps);
+            Console.WriteLine(
+                minimizer.coordinateDescent(new Vector3(0, 0, 0))
+                );
             
 
          /*   var interval = new Interval(1, 100);
@@ -58,10 +61,7 @@ namespace _2015_minimization
             //////////////
 
 
-            Vector3 v = new Vector3(1, 2, 3);
-            Console.WriteLine((v*2).ToString());
-            Console.WriteLine(v.x);
-            Console.WriteLine(f(v));
+            
 
             // dont exit app
            // while (true) ;            

@@ -106,6 +106,11 @@ namespace _2015_minimization
             return v * k;
         }
 
+        static public double operator *(Vector3 u, Vector3 v)
+        {
+            return u.x*v.x + u.y*v.y + u.z*v.z;
+        }
+
         static public Vector3 operator /(Vector3 v, double k)
         {
             return new Vector3(v.m / k);

@@ -11,7 +11,11 @@ namespace _2015_minimization
 {
 
     static class Program
-    {
+    {   
+        
+        static QuadraticFunc func;
+
+        
 
         
         [STAThread]
@@ -19,6 +23,17 @@ namespace _2015_minimization
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
+
+            double eps = 1e-6;
+
+            var A = new Matrix(new double[3, 3] { {4, 1, 1}, {1, 9.6, -1 }, {1, -1, 11.6}});
+            var b = new Vector3(1, -2, 3);
+            var K = 18;
+
+            func = new QuadraticFunc(A, b, K);
+
+            Minimizer minimizer = new Minimizer(func, eps);
+            
 
          /*   var interval = new Interval(1, 100);
             double step = 0.01f;
@@ -53,15 +68,7 @@ namespace _2015_minimization
         }
 
 
-        public static double f(Vector3 v)
-        {
-            double N = 18;
-            return 2 * v.x * v.x + (3 + 0.1 * N) * v.y * v.y 
-                + (4 + 0.1 * N) * v.z * v.z
-                + v.x * v.y - v.y * v.z
-                + v.x * v.z + v.x
-                - 2 * v.y + 3 * v.z + N;
-        }
+        
         
     }
 }

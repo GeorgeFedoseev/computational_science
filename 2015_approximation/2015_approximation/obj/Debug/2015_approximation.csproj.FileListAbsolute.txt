@@ -1,0 +1,10 @@
+S:\Projects\computational_science\2015_approximation\2015_approximation\bin\Debug\2015_approximation.exe.config
+S:\Projects\computational_science\2015_approximation\2015_approximation\obj\Debug\2015_approximation.csprojResolveAssemblyReference.cache
+S:\Projects\computational_science\2015_approximation\2015_approximation\obj\Debug\_2015_approximation.Graph.resources
+S:\Projects\computational_science\2015_approximation\2015_approximation\obj\Debug\_2015_approximation.Properties.Resources.resources
+S:\Projects\computational_science\2015_approximation\2015_approximation\obj\Debug\2015_approximation.csproj.GenerateResource.Cache
+S:\Projects\computational_science\2015_approximation\2015_approximation\bin\Debug\2015_approximation.exe
+S:\Projects\computational_science\2015_approximation\2015_approximation\bin\Debug\2015_approximation.pdb
+S:\Projects\computational_science\2015_approximation\2015_approximation\bin\Debug\ZedGraph.dll
+S:\Projects\computational_science\2015_approximation\2015_approximation\obj\Debug\2015_approximation.exe
+S:\Projects\computational_science\2015_approximation\2015_approximation\obj\Debug\2015_approximation.pdb

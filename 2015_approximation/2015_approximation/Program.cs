@@ -26,21 +26,19 @@ namespace _2015_approximation
 
             var interval = new Interval(-1, 1);
             double step = 0.01f;
-
-            /* FOR f(x) */
-            Approximator interpolator_f = new Approximator(f, 20, interval, false);
-            Approximator interpolator_f_eq = new Approximator(f, 20, interval, true);
+            
+            Approximator approximator = new Approximator(f, 5, interval);
 
             var originalGraph_f = GraphGenerator.generateGraphForFunc("original", f, interval, step, Color.Red);
-            var interpolatedGraph_f = GraphGenerator.generateGraphForFunc("interpolated", interpolator_f.lagrangePolynom, interval, step * 10, Color.Green);
-            var interpolatedGraph_f_eq = GraphGenerator.generateGraphForFunc("interpolated_eq", interpolator_f_eq.lagrangePolynom, interval, step * 10, Color.Blue);
+            var leastSquareGraph_f = GraphGenerator.generateGraphForFunc("least square", approximator.leastSquare(), interval, step, Color.Green);
+
 
 
             List<GraphData> graphsList_f = new List<GraphData>() {
-            originalGraph_f, interpolatedGraph_f, interpolatedGraph_f_eq
-        };
+                originalGraph_f, leastSquareGraph_f, 
+            };
 
-            Graph form_f = new Graph("Lagrange interpolation for f(x)", graphsList_f);
+            Graph form_f = new Graph("Least square approximation for f(x)", graphsList_f);
             form_f.Show();
 
 

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace _2015_minimization
+namespace _2015_approximation
 {
     public class Matrix
     {

@@ -26,37 +26,46 @@ namespace _2015_approximation
             f = _f;
             nodes_count = _nodes_count;
             interval = _interval;
-            equidistant = _equidistant;
-
-            var nodes = generateSpecialInterpolationNodes();
-
-          //  Console.WriteLine(string.Join(", ", nodes));            
+            equidistant = _equidistant;               
         }
 
 
-        public double lagrangePolynom(double x) {           
+        public Func<double, double> leastSquare() {
+            List<Func<double, double>> phi = new List<Func<double, double>> { 
+                _x => Math.Pow(_x, 3),
+                _x => Math.Pow(_x, 2),
+                _x => _x,
+                _x => 1
+            };
 
-            List<double> nodes;
-            if (equidistant)
-                nodes = generateEquidistantInterpolationNodes();
-            else
-                nodes = generateSpecialInterpolationNodes();
+            var nodes = generateEquidistantInterpolationNodes();
 
+            var Q = makeQ(phi, nodes);
+            var y = makeY(nodes);
+            SLESolver slvr = new SLESolver(Q.T() * Q, Q.T() * y);
+            var a = slvr.solveWithGauss(); // вектор-столбец оптимальных коэфф
 
-            double result = 0;
-            for (int i = 0; i <= nodes_count; i++) {
-                double summand = 1;
-                for (int j = 0; j <= nodes_count; j++) {
-                    if (i != j)
-                        summand *= (x - nodes[j]) / (nodes[i] - nodes[j]);
-                }
+            return x => {
+                double res = 0;
+                for (int i = 0; i < phi.Count; i++)
+                    res += a.get(i, 0) * phi[i](x);
+                return res;
+            };
+        }
 
-                summand *= f(nodes[i]);
+        private Matrix makeY(List<double> nodes) {
+            Matrix Y = new Matrix(nodes.Count, 1);
+            for (int i = 0; i < nodes.Count; i++)
+                Y.set(i, 0, f(nodes[i]));
+            return Y;
+        }
 
-                result += summand;
-            }
-
-            return result;
+        private Matrix makeQ(List<Func<double, double>> phi, List<double> nodes) {
+            Matrix Q = new Matrix(nodes.Count, phi.Count);
+            for(int i = 0; i < Q.getHeight(); i++)
+                for(int j = 0; j < Q.getWidth(); j++)
+                    Q.set(i, j, phi[j](nodes[i]));
+            return Q;
         }
 
 

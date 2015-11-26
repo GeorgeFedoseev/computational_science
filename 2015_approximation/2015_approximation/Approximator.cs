@@ -15,12 +15,10 @@ namespace _2015_approximation
         private int nodes_count;
         Interval interval;
         bool equidistant;
-               
 
         public Approximator(Func<double, double> _f, int _nodes_count, Interval _interval, bool _equidistant = true) {
             init(_f, _nodes_count, _interval, _equidistant);
         }
-
 
         private void init(Func<double, double> _f, int _nodes_count,  Interval _interval, bool _equidistant = true){
             f = _f;
@@ -29,6 +27,14 @@ namespace _2015_approximation
             equidistant = _equidistant;               
         }
 
+
+
+
+
+
+        #region LEAST SQUARE
+
+        /*** LEAST SQUARE ***/
 
         public Func<double, double> leastSquare() {
             List<Func<double, double>> phi = new List<Func<double, double>> { 
@@ -67,8 +73,9 @@ namespace _2015_approximation
                     Q.set(i, j, phi[j](nodes[i]));
             return Q;
         }
+        #endregion
 
-
+        #region NODES GENERATORS
         private List<double> generateSpecialInterpolationNodes(){
             List<double> nodes = new List<double>();
             
@@ -95,6 +102,7 @@ namespace _2015_approximation
 
             return nodes;
         }
+        #endregion
 
     }
 }

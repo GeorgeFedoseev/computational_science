@@ -29,8 +29,8 @@ namespace _2015_approximation
             
             Approximator approximator = new Approximator(f, 5, interval);
 
-            var originalGraph_f = GraphGenerator.generateGraphForFunc("original", f, interval, step, Color.Red);
-            var leastSquareGraph_f = GraphGenerator.generateGraphForFunc("least square", approximator.leastSquare(), interval, step, Color.Green);
+            var originalGraph_f = GraphGenerator.generateGraphForFunc("исходная ф-ция", f, interval, step, Color.Red);
+            var leastSquareGraph_f = GraphGenerator.generateGraphForFunc("аппроксимация", approximator.leastSquare(), interval, step, Color.Green);
 
 
 
@@ -38,7 +38,7 @@ namespace _2015_approximation
                 originalGraph_f, leastSquareGraph_f, 
             };
 
-            Graph form_f = new Graph("Least square approximation for f(x)", graphsList_f);
+            Graph form_f = new Graph("Аппроксимация методом наименьших квадратов f(x)", graphsList_f);
             form_f.Show();
 
 

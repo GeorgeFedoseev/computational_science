@@ -39,7 +39,7 @@ namespace _2015_minimization
                 _iter_count++;
             } while ((func.A * currentPoint.m + func.b.m).eNorm() > accuracy);
 
-            return new MinimizationResult(currentPoint, func.f(currentPoint), _iter_count, "Coordinate Descent");
+            return new MinimizationResult(currentPoint, func.f(currentPoint), _iter_count, "МНПС");
         }
 
         public MinimizationResult gradientDescent(Vector3 startPoint)
@@ -64,7 +64,7 @@ namespace _2015_minimization
                 _iter_count++;
             } while ((func.A * currentPoint.m + func.b.m).eNorm() > accuracy);
 
-            return new MinimizationResult(currentPoint, func.f(currentPoint), _iter_count, "Gradient Descent");
+            return new MinimizationResult(currentPoint, func.f(currentPoint), _iter_count, "МНГС");
         }
 
         private MinimizationResult linearDescent(Func<Vector3, double> f, Vector3 startPoint, Vector3 direction, 

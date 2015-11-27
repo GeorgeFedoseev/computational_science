@@ -43,9 +43,9 @@ namespace _2015_minimization
 
         public override string ToString()
         {
-            return "MinimizationResult("+base.ToString()+string.Format(" | iterations: {0}", interations)
+            return /*"MinimizationResult("+*/methodName+": "+base.ToString()/*+string.Format(" | iterations: {0}", interations)
                 +((methodName!=null)?"; method: "+methodName:"")
-                +")";
+                +")"*/;
         }
     }
 
@@ -61,7 +61,7 @@ namespace _2015_minimization
         }
 
         public override string ToString() {
-            return string.Format("func({0}, {1}, {2}) -> {3}", point.x, point.y, point.z, value);
+            return string.Format("({0:0.######}, {1:0.######}, {2:0.######}) -> {3:0.######}", point.x, point.y, point.z, value);
         }
     }
 

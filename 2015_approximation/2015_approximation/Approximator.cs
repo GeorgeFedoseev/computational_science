@@ -30,6 +30,71 @@ namespace _2015_approximation
 
 
 
+        #region LEGENDRE
+
+        public Func<double, double> legendre() {
+            List<Func<double, double>> basis = new List<Func<double, double>> { 
+                _x => Math.Pow(_x, 3),
+                _x => Math.Pow(_x, 2),
+                _x => _x,
+                _x => 1
+            };
+
+            return x => {
+                double res = 0;
+                for(int k = 0; k < basis.Count; k++) {
+                    res += intQk(interval.from, interval.to, k)/intQk2(interval.from, interval.to, k)*basis[k](x);
+                }
+                return res;
+            };
+        }
+
+        private double legendrePolynomial(double x, int k) {
+            switch (k) { 
+                case 0:
+                    return 1;
+                case 1:
+                    return x;
+                default:
+                    int n = k-1;
+                    return ((2*n+1)*x*legendrePolynomial(x, n) - n*legendrePolynomial(x, n-1))/(n+1);
+            }
+        }
+
+        private double intQk(double a, double b, int k){
+            double x = a;
+            double dx = 1e-6;
+
+            double res = 0;
+
+            while (x < b) {
+                res += f(x) * legendrePolynomial(x, k);
+                x += dx;
+            }
+
+            return res;
+        }
+
+        private double intQk2(double a, double b, int k)
+        {
+            double x = a;
+            double dx = 1e-6;
+
+            double res = 0;
+
+            while (x < b)
+            {
+                res += Math.Pow(legendrePolynomial(x, k), 2);
+                x += dx;
+            }
+
+            return res;
+        }
+
+
+
+        #endregion
+
 
 
         #region LEAST SQUARE

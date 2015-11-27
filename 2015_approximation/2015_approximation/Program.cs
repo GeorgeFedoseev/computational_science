@@ -31,11 +31,13 @@ namespace _2015_approximation
 
             var originalGraph_f = GraphGenerator.generateGraphForFunc("исходная ф-ция", f, interval, step, Color.Red);
             var leastSquareGraph_f = GraphGenerator.generateGraphForFunc("аппроксимация", approximator.leastSquare(), interval, step, Color.Green);
+            
+            var legendreGraph_f = GraphGenerator.generateGraphForFunc("Лежандр", approximator.legendre(), interval, step, Color.Orange);
 
 
 
             List<GraphData> graphsList_f = new List<GraphData>() {
-                originalGraph_f, leastSquareGraph_f, 
+                originalGraph_f, leastSquareGraph_f, legendreGraph_f
             };
 
             Graph form_f = new Graph("Аппроксимация методом наименьших квадратов f(x)", graphsList_f);

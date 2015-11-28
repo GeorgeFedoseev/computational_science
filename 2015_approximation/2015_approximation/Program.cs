@@ -30,7 +30,7 @@ namespace _2015_approximation
             Approximator approximator = new Approximator(f, 5, interval);
 
             var originalGraph_f = GraphGenerator.generateGraphForFunc("исходная ф-ция", f, interval, step, Color.Red);
-            var leastSquareGraph_f = GraphGenerator.generateGraphForFunc("аппроксимация", approximator.leastSquare(), interval, step, Color.Green);
+            var leastSquareGraph_f = GraphGenerator.generateGraphForFunc("наименьшие квадраты", approximator.leastSquare(), interval, step, Color.Green);
             
             var legendreGraph_f = GraphGenerator.generateGraphForFunc("Лежандр", approximator.legendre(), interval, step, Color.Orange);
 
@@ -40,7 +40,7 @@ namespace _2015_approximation
                 originalGraph_f, leastSquareGraph_f, legendreGraph_f
             };
 
-            Graph form_f = new Graph("Аппроксимация методом наименьших квадратов f(x)", graphsList_f);
+            Graph form_f = new Graph("Аппроксимация f(x) = (x+3)cos(x)", graphsList_f);
             form_f.Show();
 
 

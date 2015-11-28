@@ -34,16 +34,16 @@ namespace _2015_approximation
 
         public Func<double, double> legendre() {
             List<Func<double, double>> basis = new List<Func<double, double>> { 
-                _x => Math.Pow(_x, 3),
-                _x => Math.Pow(_x, 2),
+                _x => 1,
                 _x => _x,
-                _x => 1
+                _x => Math.Pow(_x, 2),
+                _x => Math.Pow(_x, 3)
             };
 
             return x => {
                 double res = 0;
                 for(int k = 0; k < basis.Count; k++) {
-                    res += intQk(interval.from, interval.to, k)/intQk2(interval.from, interval.to, k)*basis[k](x);
+                    res += intQk(interval.from, interval.to, k)/intQk2(interval.from, interval.to, k)*legendrePolynomial(x, k);
                 }
                 return res;
             };
@@ -63,12 +63,12 @@ namespace _2015_approximation
 
         private double intQk(double a, double b, int k){
             double x = a;
-            double dx = 1e-6;
+            double dx = 1e-4;
 
             double res = 0;
 
             while (x < b) {
-                res += f(x) * legendrePolynomial(x, k);
+                res += f(x) * legendrePolynomial(x, k)*dx;
                 x += dx;
             }
 
@@ -78,13 +78,13 @@ namespace _2015_approximation
         private double intQk2(double a, double b, int k)
         {
             double x = a;
-            double dx = 1e-6;
+            double dx = 1e-4;
 
             double res = 0;
 
             while (x < b)
             {
-                res += Math.Pow(legendrePolynomial(x, k), 2);
+                res += Math.Pow(legendrePolynomial(x, k), 2) * dx;
                 x += dx;
             }
 
